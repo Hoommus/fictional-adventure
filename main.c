@@ -3,6 +3,7 @@
 #include <string.h>
 #include <errno.h>
 #include "calc.h"
+#include "convert.h"
 
 int main(void) {
 	double a;
@@ -18,7 +19,9 @@ int main(void) {
 			"/ - division\n"
 			"* - multiplication\n"
 			"r - square root of a number\n"
-			"f - factorial\n");
+			"f - factorial\n"
+			"u - convert to UPPER CASE\n"
+			"l - convert to lower case\n");
 	while (true) {
 		printf("Choose math operation by corresponding char:\n");
 		err = scanf(" %c", &operator);
@@ -63,6 +66,12 @@ int main(void) {
 			case 'f':
 				res = factorial((int)a);
 				break;
+			case 'u':
+				res = to_upper();
+				continue;
+			case 'l':
+				res = to_lower();
+				continue;
 			default:
 				fprintf(stderr, "Unknown operator: %c %x\n", operator, operator);
 				continue;
